@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2017", "DOM"],
+    "target": "es5",
+    "jsx": "react",
+    "esModuleInterop": true,
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}
