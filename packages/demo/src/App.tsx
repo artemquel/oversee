@@ -1,17 +1,89 @@
 import * as React from "react";
 import { useController, useWatch } from "@overwatch/core";
-import { ExampleController } from "./controllers/ExampleController";
+import { UserController } from "./controllers/UserController";
+import { useEffect } from "react";
+import { Fullname } from "./components/Fullname";
+
+const userPlaceholder = {
+  gender: "",
+  name: {
+    title: "",
+    first: "",
+    last: "",
+  },
+  location: {
+    street: {
+      number: 0,
+      name: "",
+    },
+    city: "",
+    state: "",
+    country: "",
+    postcode: "",
+    coordinates: {
+      latitude: "",
+      longitude: "",
+    },
+    timezone: {
+      offset: "",
+      description: "",
+    },
+  },
+  email: "",
+  login: {
+    uuid: "",
+    username: "",
+    password: "",
+    salt: "",
+    md5: "",
+    sha1: "",
+    sha256: "",
+  },
+  dob: {
+    date: "",
+    age: 0,
+  },
+  registered: {
+    date: "",
+    age: 0,
+  },
+  phone: "",
+  cell: "",
+  id: {
+    name: "",
+    value: "",
+  },
+  picture: {
+    large: "",
+    medium: "",
+    thumbnail: "",
+  },
+  nat: "",
+};
 
 export const App = () => {
-  const controller = useController(ExampleController);
-  const actionResult = useWatch(ExampleController, "action");
-  const stringResult = useWatch(ExampleController, "string");
-  const asyncResult = useWatch(ExampleController, "asyncMethod");
+  const boredController = useController(UserController);
+  useWatch(UserController, "getRandomUser", userPlaceholder);
+  const loading = useWatch(UserController, "loading", true);
+
+  const onClick = () => {
+    boredController.getRandomUser();
+  };
+
+  useEffect(() => {
+    boredController.getRandomUser();
+  }, []);
 
   return (
     <div>
-      <span>{actionResult}</span>
-      <button onClick={() => controller.action()}>Click</button>
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          <Fullname />
+        </div>
+      )}
+      <button onClick={onClick}>get new</button>
     </div>
   );
 };

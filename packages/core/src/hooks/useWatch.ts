@@ -22,12 +22,13 @@ export const useWatch = <
   Method extends TMethod<Class>
 >(
   token: Class,
-  method: Method
+  method: Method,
+  defaultValue?: TReturnType<Class, Method>
 ): TReturnType<Class, Method> => {
   const channel = `${token.name}:${method as string}`;
 
   const { bus, storage } = useContext(OverwatchContext);
-  const [value, setValue] = useState(storage.get(channel));
+  const [value, setValue] = useState(storage.get(channel) || defaultValue);
 
   useEffect(() => {
     bus.on(channel, (value) => {
