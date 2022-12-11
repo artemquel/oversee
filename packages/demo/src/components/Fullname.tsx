@@ -1,11 +1,6 @@
-import { useWatch } from "@overwatch/core";
 import * as React from "react";
-import { UserController } from "../controllers/UserController";
+import { IUser } from "../controllers/UserController";
 
-export const Fullname = () => {
-  const {
-    name: { title, first, last },
-  } = useWatch(UserController, "getRandomUser");
-
+export const Fullname = ({ title, first, last }: IUser["name"]) => {
   return <h1>{[title, first, last].join(" ")}</h1>;
 };

@@ -63,7 +63,7 @@ const userPlaceholder = {
 
 export const App = () => {
   const boredController = useController(UserController);
-  useWatch(UserController, "getRandomUser", userPlaceholder);
+  const user = useWatch(UserController, "getRandomUser", userPlaceholder);
   const loading = useWatch(UserController, "loading", true);
 
   const onClick = () => {
@@ -80,7 +80,8 @@ export const App = () => {
         <h1>Loading...</h1>
       ) : (
         <div>
-          <Fullname />
+          <img src={user.picture.large} alt={"avatar"} />
+          <Fullname {...user.name} />
         </div>
       )}
       <button onClick={onClick}>get new</button>

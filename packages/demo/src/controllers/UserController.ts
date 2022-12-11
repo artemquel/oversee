@@ -2,7 +2,7 @@ import { OverwatchAll } from "@overwatch/core";
 
 const API_PREFIX = "https://randomuser.me/api/";
 
-interface IUser {
+export interface IUser {
   gender: string;
   name: {
     title: string;
