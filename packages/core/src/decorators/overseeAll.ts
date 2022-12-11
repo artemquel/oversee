@@ -1,12 +1,12 @@
-import { Overwatch } from "./overwatch";
+import { Oversee } from "./oversee";
 
-interface ISubberOptions {
+interface IOverseeOptions {
   deep?: boolean;
   exclude?: string[];
   excludePrefix?: string;
 }
 
-export const OverwatchAll = (options: ISubberOptions = {}) => {
+export const OverseeAll = (options: IOverseeOptions = {}) => {
   return (target: any) => {
     let descriptors = Object.getOwnPropertyDescriptors(target.prototype);
 
@@ -33,7 +33,7 @@ export const OverwatchAll = (options: ISubberOptions = {}) => {
         continue;
       }
 
-      Overwatch()(target, property, descriptor);
+      Oversee()(target, property, descriptor);
       Object.defineProperty(target.prototype, property, descriptor);
     }
   };

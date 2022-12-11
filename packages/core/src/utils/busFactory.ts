@@ -1,11 +1,19 @@
 import EventEmitter from "eventemitter3";
 
+declare global {
+  interface Window {
+    oversee: {
+      bus: EventEmitter;
+    };
+  }
+}
+
 // TODO: figure out how to implement a common transport between context and decorators
 export const busFactory = () => {
-  if (!window.overwatch?.bus) {
-    window.overwatch = {
+  if (!window.oversee?.bus) {
+    window.oversee = {
       bus: new EventEmitter(),
     };
   }
-  return window.overwatch.bus;
+  return window.oversee.bus;
 };

@@ -1,6 +1,6 @@
-import { OverwatchAll } from "@overwatch/core/src/decorators/overwatchAll";
+import { OverseeAll } from "@oversee/core/src/decorators/overseeAll";
 
-@OverwatchAll()
+@OverseeAll()
 export class Foo {
   public method1() {
     return 1;

@@ -21,7 +21,7 @@ describe("useController hook", () => {
   beforeEach(async () => {
     window = new JSDOM().window;
     eventEmitter = new EventEmitter();
-    window.overwatch = {
+    window.oversee = {
       bus: eventEmitter,
     };
 
@@ -33,10 +33,10 @@ describe("useController hook", () => {
     global.window = window;
 
     [Provider, useController] = await Promise.all([
-      import("@overwatch/core/src/provider/OverwatchProvider").then(
-        ({ OverwatchProvider }) => OverwatchProvider
+      import("@oversee/core/src/provider/OverseeProvider").then(
+        ({ OverseeProvider }) => OverseeProvider
       ),
-      import("@overwatch/core/src/hooks/useController").then(
+      import("@oversee/core/src/hooks/useController").then(
         ({ useController }) => useController
       ),
     ]);

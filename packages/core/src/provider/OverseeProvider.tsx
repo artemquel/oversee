@@ -2,27 +2,27 @@ import React, { createContext, PropsWithChildren } from "react";
 import { busFactory } from "../utils/busFactory";
 import EventEmitter from "eventemitter3";
 
-export interface IOverwatchContext {
+export interface IOverseeContext {
   bus: EventEmitter;
   controllers: Record<string, object>;
   storage: Map<string, unknown>;
 }
 
-export interface IOverwatchProviderProps {
+export interface IOverseeProviderProps {
   controllers: object[];
 }
 
-export const OverwatchContext = createContext<IOverwatchContext>({
+export const OverseeContext = createContext<IOverseeContext>({
   bus: busFactory(),
   storage: new Map(),
   controllers: {},
 });
 
-export const OverwatchProvider = (
-  props: PropsWithChildren<IOverwatchProviderProps>
+export const OverseeProvider = (
+  props: PropsWithChildren<IOverseeProviderProps>
 ) => {
   return (
-    <OverwatchContext.Provider
+    <OverseeContext.Provider
       value={{
         bus: busFactory(),
         storage: new Map(),
@@ -36,6 +36,6 @@ export const OverwatchProvider = (
       }}
     >
       {props.children}
-    </OverwatchContext.Provider>
+    </OverseeContext.Provider>
   );
 };

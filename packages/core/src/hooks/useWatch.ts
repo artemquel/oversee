@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { OverwatchContext } from "../provider/OverwatchProvider";
+import { OverseeContext } from "../provider/OverseeProvider";
 
 type ExtractKeysBy<BaseInterface, Target> = {
   [K in keyof BaseInterface]: BaseInterface[K] extends Target ? K : never;
@@ -27,7 +27,7 @@ export const useWatch = <
 ): TReturnType<Class, Method> => {
   const channel = `${token.name}:${method as string}`;
 
-  const { bus, storage } = useContext(OverwatchContext);
+  const { bus, storage } = useContext(OverseeContext);
   const [value, setValue] = useState(storage.get(channel) || defaultValue);
 
   useEffect(() => {

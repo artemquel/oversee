@@ -8,7 +8,7 @@ import type {
   TReturnType,
   TMethod,
   TConstructor,
-} from "@overwatch/core/src/hooks/useWatch";
+} from "@oversee/core/src/hooks/useWatch";
 import React, { useEffect } from "react";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
@@ -31,7 +31,7 @@ describe("useWatch hook", () => {
   beforeEach(async () => {
     window = new JSDOM().window;
     eventEmitter = new EventEmitter();
-    window.overwatch = {
+    window.oversee = {
       bus: eventEmitter,
     };
 
@@ -43,13 +43,13 @@ describe("useWatch hook", () => {
     global.window = window;
 
     [Provider, useWatch, useController] = await Promise.all([
-      import("@overwatch/core/src/provider/OverwatchProvider").then(
-        ({ OverwatchProvider }) => OverwatchProvider
+      import("@oversee/core/src/provider/OverseeProvider").then(
+        ({ OverseeProvider }) => OverseeProvider
       ),
-      import("@overwatch/core/src/hooks/useWatch").then(
+      import("@oversee/core/src/hooks/useWatch").then(
         ({ useWatch }) => useWatch
       ),
-      import("@overwatch/core/src/hooks/useController").then(
+      import("@oversee/core/src/hooks/useController").then(
         ({ useController }) => useController
       ),
     ]);

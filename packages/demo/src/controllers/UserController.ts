@@ -1,4 +1,4 @@
-import { OverwatchAll } from "@overwatch/core";
+import { OverseeAll } from "@oversee/core";
 
 const API_PREFIX = "https://randomuser.me/api/";
 
@@ -69,7 +69,7 @@ interface IResponse {
   };
 }
 
-@OverwatchAll()
+@OverseeAll()
 export class UserController {
   public async getRandomUser(): Promise<IUser> {
     this.loading(true);

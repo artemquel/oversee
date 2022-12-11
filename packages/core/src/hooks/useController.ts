@@ -1,10 +1,10 @@
 import { useContext } from "react";
-import { OverwatchContext } from "../provider/OverwatchProvider";
+import { OverseeContext } from "../provider/OverseeProvider";
 
 export const useController = <T extends new (...args: any[]) => any>(
   token: T
 ): InstanceType<T> => {
-  const { controllers } = useContext(OverwatchContext);
+  const { controllers } = useContext(OverseeContext);
   if (controllers[token.name]) {
     return controllers[token.name] as InstanceType<T>;
   }

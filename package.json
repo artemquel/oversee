@@ -1,13 +1,13 @@
 {
-  "name": "overwatch",
+  "name": "oversee",
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "core:build": "yarn workspace @overwatch/core build",
-    "core:test": "yarn workspace @overwatch/core test",
-    "demo:watch": "concurrently -n Core,Demo \"yarn workspace @overwatch/core watch\" \"yarn workspace demo start\"",
+    "core:build": "yarn workspace @oversee/core build",
+    "core:test": "yarn workspace @oversee/core test",
+    "demo:watch": "concurrently -n Core,Demo \"yarn workspace @oversee/core watch\" \"yarn workspace demo start\"",
     "demo:build": "yarn workspace demo build"
   },
   "devDependencies": {

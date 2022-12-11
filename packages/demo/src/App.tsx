@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useController, useWatch } from "@overwatch/core";
+import { useController, useWatch } from "@oversee/core";
 import { UserController } from "./controllers/UserController";
 import { useEffect } from "react";
 import { Fullname } from "./components/Fullname";

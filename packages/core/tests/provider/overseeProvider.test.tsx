@@ -4,12 +4,12 @@ import React, { useContext } from "react";
 import { assert } from "chai";
 import { act } from "react-dom/test-utils";
 import { createRoot, Root } from "react-dom/client";
-import type { IOverwatchContext } from "@overwatch/core/src/provider/OverwatchProvider";
+import type { IOverseeContext } from "@oversee/core/src/provider/OverseeProvider";
 import { Foo } from "./helpers";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
 
-describe("Overwarch provider", () => {
+describe("Oversee provider", () => {
   let window: DOMWindow;
   let eventEmitter: EventEmitter;
   let rootContainer: HTMLDivElement;
@@ -18,7 +18,7 @@ describe("Overwarch provider", () => {
   beforeEach(() => {
     window = new JSDOM().window;
     eventEmitter = new EventEmitter();
-    window.overwatch = {
+    window.oversee = {
       bus: eventEmitter,
     };
 
@@ -36,34 +36,34 @@ describe("Overwarch provider", () => {
 
   it("should render provider with children", async () => {
     // since we are emulating a window, we will load the component in the suite
-    const { OverwatchProvider } = await import(
-      "@overwatch/core/src/provider/OverwatchProvider"
+    const { OverseeProvider } = await import(
+      "@oversee/core/src/provider/OverseeProvider"
     );
 
     await act(() => {
       root.render(
-        <OverwatchProvider controllers={[]}>
-          <div id="children">child of overwatch provider</div>
-        </OverwatchProvider>
+        <OverseeProvider controllers={[]}>
+          <div id="children">child of oversee provider</div>
+        </OverseeProvider>
       );
     });
 
     assert.equal(
       window.document.getElementById("children").textContent,
-      "child of overwatch provider"
+      "child of oversee provider"
     );
   });
 
   it("should render provider with correct context", async () => {
     // since we are emulating a window, we will load the component in the suite
-    const { OverwatchProvider, OverwatchContext } = await import(
-      "@overwatch/core/src/provider/OverwatchProvider"
+    const { OverseeProvider, OverseeContext } = await import(
+      "@oversee/core/src/provider/OverseeProvider"
     );
 
-    let context: IOverwatchContext;
+    let context: IOverseeContext;
 
     const Component = () => {
-      context = useContext(OverwatchContext);
+      context = useContext(OverseeContext);
       return <div />;
     };
 
@@ -71,9 +71,9 @@ describe("Overwarch provider", () => {
 
     await act(() => {
       root.render(
-        <OverwatchProvider controllers={[controller]}>
+        <OverseeProvider controllers={[controller]}>
           <Component />
-        </OverwatchProvider>
+        </OverseeProvider>
       );
     });
 

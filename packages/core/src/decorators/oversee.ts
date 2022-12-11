@@ -1,6 +1,6 @@
 import { busFactory } from "../utils/busFactory";
 
-export function Overwatch() {
+export function Oversee() {
   return function (
     target: any,
     key: string | symbol,

@@ -1,6 +1,6 @@
 import { DOMWindow, JSDOM } from "jsdom";
 import EventEmitter from "eventemitter3";
-import { busFactory } from "@overwatch/core/src/utils/busFactory";
+import { busFactory } from "@oversee/core/src/utils/busFactory";
 import { assert } from "chai";
 
 describe("busFactory", () => {
@@ -10,7 +10,7 @@ describe("busFactory", () => {
   beforeEach(() => {
     window = new JSDOM().window;
     eventEmitter = new EventEmitter();
-    window.overwatch = {
+    window.oversee = {
       bus: eventEmitter,
     };
 

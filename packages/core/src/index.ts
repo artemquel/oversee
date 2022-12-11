@@ -1,5 +1,5 @@
-export { Overwatch } from "./decorators/overwatch";
-export { OverwatchAll } from "./decorators/overwatchAll";
+export { Oversee } from "./decorators/oversee";
+export { OverseeAll } from "./decorators/overseeAll";
 export { useController } from "./hooks/useController";
 export { useWatch } from "./hooks/useWatch";
-export { OverwatchProvider } from "./provider/OverwatchProvider";
+export { OverseeProvider } from "./provider/OverseeProvider";

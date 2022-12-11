@@ -3,14 +3,14 @@ import EventEmitter from "eventemitter3";
 import { Foo } from "./helpers";
 import { assert } from "chai";
 
-describe("Overwarch decorator", () => {
+describe("Oversee decorator", () => {
   let window: DOMWindow;
   let eventEmitter: EventEmitter;
 
   beforeEach(() => {
     window = new JSDOM().window;
     eventEmitter = new EventEmitter();
-    window.overwatch = {
+    window.oversee = {
       bus: eventEmitter,
     };
 

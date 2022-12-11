@@ -1,5 +1,5 @@
 {
-  "name": "@overwatch/core",
+  "name": "@oversee/core",
   "version": "0.0.1",
   "description": "Separating logic from views in two hooks",
   "license": "MIT",
@@ -11,7 +11,7 @@
   "author": "Artem Lipovoy <artemlipovoy@yandex.ru>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/artemquel/overwatch"
+    "url": "https://github.com/artemquel/oversee"
   },
   "keywords": [
     "eventemitter",
@@ -24,8 +24,12 @@
     "store",
     "reactive",
     "functional",
-    "controller"
+    "controller",
+    "watch"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "parcel build src/index.ts",
     "watch": "parcel watch --no-hmr src/index.ts",
