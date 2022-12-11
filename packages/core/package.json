@@ -1,6 +1,6 @@
 {
   "name": "@oversee/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Separating logic from views in two hooks",
   "license": "MIT",
   "main": "dist/index.js",
