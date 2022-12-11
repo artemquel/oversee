@@ -62,16 +62,16 @@ const userPlaceholder = {
 };
 
 export const App = () => {
-  const boredController = useController(UserController);
+  const controller = useController(UserController);
   const user = useWatch(UserController, "getRandomUser", userPlaceholder);
   const loading = useWatch(UserController, "loading", true);
 
   const onClick = () => {
-    boredController.getRandomUser();
+    controller.getRandomUser();
   };
 
   useEffect(() => {
-    boredController.getRandomUser();
+    controller.getRandomUser();
   }, []);
 
   return (

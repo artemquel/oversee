@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "lib": ["ES2017", "DOM"],
     "target": "es5",
     "jsx": "react",
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "exclude": [
     "node_modules"

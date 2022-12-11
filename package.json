@@ -6,7 +6,10 @@
     "packages/*"
   ],
   "scripts": {
-    "demo:watch": "concurrently -n Core,Demo \"yarn workspace @overwatch/core watch\" \"yarn workspace demo start\""
+    "core:build": "yarn workspace @overwatch/core build",
+    "core:test": "yarn workspace @overwatch/core test",
+    "demo:watch": "concurrently -n Core,Demo \"yarn workspace @overwatch/core watch\" \"yarn workspace demo start\"",
+    "demo:build": "yarn workspace demo build"
   },
   "devDependencies": {
     "concurrently": "^7.6.0",

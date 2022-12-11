@@ -5,14 +5,14 @@ type ExtractKeysBy<BaseInterface, Target> = {
   [K in keyof BaseInterface]: BaseInterface[K] extends Target ? K : never;
 }[keyof BaseInterface];
 
-type TConstructor = new (...args: any[]) => any;
+export type TConstructor = new (...args: any[]) => any;
 
-type TMethod<Class extends TConstructor> = ExtractKeysBy<
+export type TMethod<Class extends TConstructor> = ExtractKeysBy<
   InstanceType<Class>,
   (...args: unknown[]) => unknown
 >;
 
-type TReturnType<
+export type TReturnType<
   Class extends TConstructor,
   Method extends TMethod<Class>
 > = Awaited<ReturnType<InstanceType<Class>[Method]>>;
