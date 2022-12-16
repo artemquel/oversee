@@ -1,16 +1,3 @@
-# oversee
+# Oversee
 
-A simple tool for React to separate logic and view with one decorator and two hooks
-
-
-## Installation
-
-Install `@oversee/core` with npm
-
-```bash
-npm install @oversee/core
-```
-or yarn
-```bash
-yarn add @oversee/core
-```
+[Learn more](https://github.com/artemquel/oversee/tree/master/packages/core)
