@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { OverseeContext } from "../provider/OverseeProvider";
 import { TAsyncReturnType, TConstructor, TMethod, TReturnType } from "./types";
 
-export const useWatch = <
+export const useAsyncWatch = <
   Class extends TConstructor,
   Method extends TMethod<Class>
 >(

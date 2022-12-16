@@ -1,8 +1,9 @@
 import * as React from "react";
-import { useController, useWatch } from "@oversee/core";
+import { useController } from "@oversee/core";
 import { UserController } from "./controllers/UserController";
 import { useEffect } from "react";
 import { Fullname } from "./components/Fullname";
+import { useAsyncWatch } from "@oversee/core/src";
 
 const userPlaceholder = {
   gender: "",
@@ -63,7 +64,11 @@ const userPlaceholder = {
 
 export const App = () => {
   const controller = useController(UserController);
-  const result = useWatch(UserController, "getRandomUser", userPlaceholder);
+  const {
+    loading,
+    result: user,
+    error,
+  } = useAsyncWatch(UserController, "getRandomUser", userPlaceholder);
 
   const onClick = () => {
     controller.getRandomUser();
@@ -72,17 +77,17 @@ export const App = () => {
   useEffect(() => {
     controller.getRandomUser();
   }, []);
-  console.log(result);
+
   return (
     <div>
-      {/*{loading ? (*/}
-      {/*  <h1>Loading...</h1>*/}
-      {/*) : (*/}
-      {/*  <div>*/}
-      {/*    <img src={user.picture.large} alt={"avatar"} />*/}
-      {/*    <Fullname {...user.name} />*/}
-      {/*  </div>*/}
-      {/*)}*/}
+      {loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <div>
+          <img src={user.picture.large} alt={"avatar"} />
+          <Fullname {...user.name} />
+        </div>
+      )}
       <button onClick={onClick}>get new</button>
     </div>
   );
