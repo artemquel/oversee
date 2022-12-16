@@ -72,17 +72,9 @@ interface IResponse {
 @OverseeAll()
 export class UserController {
   public async getRandomUser(): Promise<IUser> {
-    this.loading(true);
-
     const response = await this.get<IResponse>("");
 
-    this.loading(false);
-
     return response.results[0];
-  }
-
-  public loading(state: boolean) {
-    return state;
   }
 
   private get<Success>(path, query = {}): Promise<Success> {

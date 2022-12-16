@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "experimentalDecorators": true,
-    "lib": ["ES2017", "DOM"],
+    "lib": ["ES2018", "DOM"],
     "target": "es5",
     "jsx": "react",
     "esModuleInterop": true

@@ -63,8 +63,7 @@ const userPlaceholder = {
 
 export const App = () => {
   const controller = useController(UserController);
-  const user = useWatch(UserController, "getRandomUser", userPlaceholder);
-  const loading = useWatch(UserController, "loading", true);
+  const result = useWatch(UserController, "getRandomUser", userPlaceholder);
 
   const onClick = () => {
     controller.getRandomUser();
@@ -73,17 +72,17 @@ export const App = () => {
   useEffect(() => {
     controller.getRandomUser();
   }, []);
-
+  console.log(result);
   return (
     <div>
-      {loading ? (
-        <h1>Loading...</h1>
-      ) : (
-        <div>
-          <img src={user.picture.large} alt={"avatar"} />
-          <Fullname {...user.name} />
-        </div>
-      )}
+      {/*{loading ? (*/}
+      {/*  <h1>Loading...</h1>*/}
+      {/*) : (*/}
+      {/*  <div>*/}
+      {/*    <img src={user.picture.large} alt={"avatar"} />*/}
+      {/*    <Fullname {...user.name} />*/}
+      {/*  </div>*/}
+      {/*)}*/}
       <button onClick={onClick}>get new</button>
     </div>
   );

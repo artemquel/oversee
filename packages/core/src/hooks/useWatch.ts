@@ -1,21 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { OverseeContext } from "../provider/OverseeProvider";
-
-type ExtractKeysBy<BaseInterface, Target> = {
-  [K in keyof BaseInterface]: BaseInterface[K] extends Target ? K : never;
-}[keyof BaseInterface];
-
-export type TConstructor = new (...args: any[]) => any;
-
-export type TMethod<Class extends TConstructor> = ExtractKeysBy<
-  InstanceType<Class>,
-  (...args: unknown[]) => unknown
->;
-
-export type TReturnType<
-  Class extends TConstructor,
-  Method extends TMethod<Class>
-> = Awaited<ReturnType<InstanceType<Class>[Method]>>;
+import { TConstructor, TMethod, TReturnType } from "./types";
 
 export const useWatch = <
   Class extends TConstructor,
@@ -32,8 +17,15 @@ export const useWatch = <
 
   useEffect(() => {
     bus.on(channel, (value) => {
-      storage.set(channel, value);
-      setValue(value);
+      if (value instanceof Promise) {
+        value.then((value) => {
+          storage.set(channel, value);
+          setValue(value);
+        });
+      } else {
+        storage.set(channel, value);
+        setValue(value);
+      }
     });
 
     return () => {

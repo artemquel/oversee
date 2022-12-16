@@ -12,13 +12,7 @@ export function Oversee() {
 
     descriptor.value = function (...args) {
       const result = originalMethod.call(this, ...args);
-
-      if (result instanceof Promise) {
-        result.then((result) => busFactory().emit(token, result));
-      } else {
-        busFactory().emit(token, result);
-      }
-
+      busFactory().emit(token, result);
       return result;
     };
   };
