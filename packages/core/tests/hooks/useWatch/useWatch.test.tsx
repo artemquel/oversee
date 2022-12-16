@@ -8,7 +8,7 @@ import type {
   TReturnType,
   TMethod,
   TConstructor,
-} from "@oversee/core/src/hooks/useWatch";
+} from "@oversee/core/src/hooks/types";
 import React, { useEffect } from "react";
 
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
